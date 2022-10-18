@@ -72,3 +72,9 @@
     .form-style-4 input[type=button]:hover {
         background: #394D61;
     }
+.error{
+    font-weight: 700;
+    font-size: 14px;
+    color: red;
+    display: none;
+}
