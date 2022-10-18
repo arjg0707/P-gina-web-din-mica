@@ -1,61 +1,62 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" >
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_1.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
+    <script src="{{url_for('static', filename='index.js')}}"></script>
+
     <title>Form</title>
 </head>
 <body>
-    <form action="{{url_for('curriculum')}}" method="post" onsubmit = "return(validateForm())" class="form-style-4">
+    <form action="{{url_for('curriculum')}}" name="CVForm" method="post" onsubmit = "return validateForm()" class="form-style-4">
 
         <div class="form-group">
-            <label for="name">Nombres:</label>
-            <input type="text" name="name" id ="name" class = "i_empty" onkeyup="validateForm()" placeholder="Nombres?" />
-
+            <label for="name">Nombres*:</label>
+            <input type="text" name="name" id ="name"  onkeyup="validateForm()" placeholder="Nombres?" />
+            <span class="error">Complete sus nombres</span>
         </div>
 
         <div class="form-group">
-            <label for="date">Fecha de nacimiento:</label>
-            <input type="date" name="date" id ="date" class = "i_empty" onchange="validateForm()" placeholder="Fecha de nacimiento?" />
-
+            <label for="date">Fecha de nacimiento*:</label>
+            <input type="date" name="date_" id ="date_"  onkeyup="validateForm()" placeholder="Fecha de nacimiento?" />
+            <span class="error">Complete su Fecha de Nacimiento</span>
         </div>
 
         <div class="form-group">
-            <label for="occupation">Ocupacion:</label>
-            <input type="text" name="occupation" id ="occupation" class = "i_empty" onkeyup="validateForm()" placeholder="Ocupacion?" />
-
+            <label for="occupation">Ocupacion*:</label>
+            <input type="text" name="occupation" id ="occupation" onkeyup="validateForm()" placeholder="Ocupacion?" />
+            <span class="error">Complete su Ocupacion</span>
         </div>
 
         <div class="form-group">
-            <label for="phone">Telefono:</label>
-            <input type="text" name="phone" id ="phone" class = "i_empty" onkeyup="validateForm()" placeholder="Telefono?" />
-
+            <label for="phone">Telefono*:</label>
+            <input type="text" name="phone" id ="phone" onkeyup="validateForm()" placeholder="Telefono?" />
+            <span class="error">Complete su Telefono</span>
         </div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="text" name="email" id ="email" class = "i_empty" onkeyup="validateForm()" placeholder="Email?" />
-
+            <label for="email">Email*:</label>
+            <input type="text" name="email" id ="email" onkeyup="validateForm()" placeholder="Email?" />
+            <span class="error">Complete su Email</span>
         </div>
 
         <div class="form-group">
-            <label for="nationality">Nacionalidad:</label>
+            <label for="nationality">Nacionalidad*:</label>
             <select id="nationality" name="nationality" onchange="validateForm()">
                 <option value="Peruano">Peruano</option>
                 <option value="Colombiano">Colombiano</option>
                 <option value="Chileno">Chileno</option>
                 <option value="Venezolano">Venezolano</option>
                 <option value="Argentino">Argentino</option>
-
             </select>
+            <span class="error">Seleccione una Nacionalidad</span>
 
         </div>
 
         <div class="form-group">
-            <label for="level">Nivel de Ingles:</label>
+            <label for="level">Nivel de Ingles*:</label>
             <div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" value="basico" id="level1" name="level">
@@ -76,12 +77,13 @@
                     <input class="form-check-input" type="radio" value="fluido" id="level4" name="level">
                     <label class="form-check-label" for="level4">Fluido</label>
                 </div>
+                <span class="error">Seleccione una opcion</span>
             </div>
 
         </div>
 
         <div class="form-group">
-            <label for="language">Lenguajes de Programacion:</label>
+            <label for="language">Lenguajes de Programacion*:</label>
             <select id="language" name="language" multiple onchange="validateForm()">
                 <option value="Python">Python</option>
                 <option value="C">C</option>
@@ -90,12 +92,13 @@
                 <option value="PHP">PHP</option>
 
             </select>
+            <span class="error">Seleccione una opcion</span>
 
         </div>
 
         <div class="form-group">
-            <label for="aptitudes">Aptitudes:</label>
-            <input lista="aptitudes_list" name="aptitudes" id="aptitudes" class = "i_empty"onkeyup="validateForm()" />
+            <label for="aptitudes">Aptitudes*:</label>
+            <input lista="aptitudes_list" name="aptitudes" id="aptitudes" onkeyup="validateForm()" />
 
             <datalist id="aptitudes_list">
                 <option value="Inteligencia Emocional"></option>
@@ -104,12 +107,13 @@
                 <option value="Capacidad analitica"></option>
                 <option value="Habilidades fisicas"></option>
             </datalist>
+            <span class="error">Seleccione al menos una opcion</span>
 
         </div>
 
 
         <div class="form-group">
-            <label for="skills">Habilidades:</label>
+            <label for="skills">Habilidades*:</label>
             <div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="Acondicionamiento fisico" id="skill1" name="skills">
@@ -132,18 +136,19 @@
                 </div>
             </div>
 
+            <span class="error">Seleccione una opcion</span>
+
         </div>
 
         <div class="form-group">
-            <label for="profile">Perfil:</label>
-            <textarea id="profile" name="profile" class = "i_empty" onkeyup="validateForm()" rows="6" cols="30"></textarea>
-
+            <label for="profile">Perfil*:</label>
+            <textarea id="profile" name="profile"  onkeyup="validateForm()" rows="6" cols="30"></textarea>
+            <span class="error">Complete su Perfil</span>
         </div>
 
-        <button type="submit" id = "submit">Submit</button>
+        <button type="submit" onclick ="validateForm()"id = "submit" >Submit</button>
     </form>
 
-    <script src="{{url_for('static', filename='index.js')}}"></script>
 
 </body>
 </html>
